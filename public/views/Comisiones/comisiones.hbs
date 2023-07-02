@@ -39,25 +39,33 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Comisiones registradas en el sistema</h3>
-                                    <div class="col-lg-12" style="float: right; width: 16%; margin-right: -3.5%">
+                                    {{!-- <div class="col-lg-12" style="float: right; width: 16%; margin-right: -3.5%">
                                         <a class="btn btn-success boton-registro" href="/registroComisiones">
                                             Agregar Comisión</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="row"></div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
-                                     <div class="row">
-                                            <div class="">
-                                                <div class="form-group" style="padding-left: 6px;">
-                                                    <label for="searchInput">Buscar:</label>
-                                                    <input type="text" id="searchInput" class="form-control"
-                                                        placeholder="Ingrese término de búsqueda" style="width: 110%;">
+                                    <div class="row">
+                                        <div class="">
+                                            <div class="form-group" style="padding-left: 6px;">
+                                                <label for="searchInput">Buscar:</label>
+                                                <input type="text" id="searchInput" class="form-control"
+                                                    placeholder="Ingrese término de búsqueda" style="width: 110%;">
 
-                                                </div>
                                             </div>
-                                        <div style="padding-left:40px; padding-top:30px" >
-                                            <button class="btn btn-success" id="btnGenerarEXCEL" >
+                                        </div>
+                                        <div style="display: none;">
+                                            <div class="form-group" style="padding-left: 30px;">
+                                                <label for="fechaA">Seleccione un año:</label>
+                                                <select class="form-control" id="fechaA" style="">
+                                                    <option value="" disabled selected>Elija un año</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="padding-left:40px; padding-top:30px">
+                                            <button class="btn btn-success" id="btnGenerarEXCEL">
                                                 <i class="fas fa-file-excel" style="font-size: 14px;"></i> Descargar
                                                 Excel
                                             </button>
@@ -68,21 +76,91 @@
                                         <thead>
                                             <tr>
                                                 <th>id</th>
-                                                <th>Nombre</th>
-                                                <th>Total Ventas</th>
-                                                <th>Fecha</th>
-                                                <th>Porcentaje</th>
-                                                <th>Comisión </th>
-                                                <th>Observación</th>
+                                                <th>Nombre empleado</th>
+
+                                                <th>Enero</th>
+                                                <th>Monto</th>
+                                                <th>Febrero</th>
+                                                <th>Monto</th>
+                                                <th>Marzo</th>
+                                                <th>Monto</th>
+                                                <th>Abril</th>
+                                                <th>Monto</th>
+                                                <th>Mayo</th>
+                                                <th>Monto</th>
+                                                <th>Junio</th>
+                                                <th>Monto</th>
+                                                <th>Julio</th>
+                                                <th>Monto</th>
+                                                <th>Agosto</th>
+                                                <th>Monto</th>
+                                                <th>Septiembre</th>
+                                                <th>Monto</th>
+                                                <th>Octubre</th>
+                                                <th>Monto</th>
+                                                <th>Noviembre</th>
+                                                <th>Monto</th>
+                                                <th>Diciembre</th>
+                                                <th>Monto</th>
+                                                <th>Estado</th>
                                                 <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody id="contenido">
-                                            
+
                                         </tbody>
-                                        <tfoot>
-                                           
-                                        </tfoot>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    6498a5817af7924f7c52a78e
+                                                </td>
+                                                <td>
+                                                    Julio antonela
+                                                </td>
+                                                <td>5%</td>
+                                                <td>5000</td>
+                                                <td>4%</td>
+                                                 <td>15000</td>
+                                                <td>1%</td>
+                                                 <td>55000</td>
+                                                <td>4%</td>
+                                                 <td>502300</td>
+                                                <td>2%</td>
+                                                 <td>522000</td>
+
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Inactivo</td>
+                                                <td>
+                                                    <a class='btn btn-primary' style="display: none;"
+                                                        onclick='editar(${JSON.stringify(comision)})'><i
+                                                            class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="/registroComisiones" class="btn btn-success"><i
+                                                            class="fa-solid fa-plus"></i></a>
+                                                    <a class="btn btn-info"
+                                                        onclick="mostrarModal('Julio Antonela', '5%', '10000', '500')"><i
+                                                            class="fa-solid fa-eye"></i></a>
+
+                                                    <a href="#" class="btn btn-warning"
+                                                        onclick="confirmarCambioEstado()" id="estadoBtn">
+                                                        <i class="fa-solid fa-toggle-on"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -95,6 +173,45 @@
                 </div>
                 <!-- /.container-fluid -->
             </section>
+            <!-- Modal -->
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Información de la Comisión</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table">
+                                <tr>
+                                    <td>Nombre:</td>
+                                    <td id="nombreModal"></td>
+                                </tr>
+                                <tr>
+                                    <td>Mes:</td>
+                                    <td id="mesActualModal"></td>
+                                </tr>
+                                <tr>
+                                    <td>Total de Ventas:</td>
+                                    <td id="totalVentasModal"></td>
+                                </tr>
+                                <tr>
+                                    <td>Porcentaje de Comisión:</td>
+                                    <td id="porcentajeComisionModal"></td>
+                                </tr>
+                                <tr>
+                                    <td>Comisión Total:</td>
+                                    <td id="comisionTotalModal"></td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- /.content -->
         </div>
 
@@ -108,7 +225,27 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
- 
+    <script>
+        function mostrarModal(nombre, porcentajeComision, totalVentas, comisionTotal) {
+            var nombreModal = document.getElementById('nombreModal');
+            var mesActualModal = document.getElementById('mesActualModal');
+            var porcentajeComisionModal = document.getElementById('porcentajeComisionModal');
+            var totalVentasModal = document.getElementById('totalVentasModal');
+            var comisionTotalModal = document.getElementById('comisionTotalModal');
+
+            nombreModal.textContent = nombre;
+            // Obtener mes actual
+            var mesActual = new Date().toLocaleString('default', { month: 'long' });
+            mesActualModal.textContent = mesActual;
+            totalVentasModal.textContent = totalVentas;
+            comisionTotalModal.textContent = comisionTotal;
+            porcentajeComisionModal.textContent = porcentajeComision;
+            // Calcular valor de venta
+
+
+            $('#myModal').modal('show');
+        }
+    </script>
     <!-- jQuery -->
     <script src="/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -118,42 +255,81 @@
     <script src="/js/adminlte.min.js"></script>
 
     <!-- Page specific script -->
-   
+    <script>
+        function confirmarCambioEstado() {
+            Swal.fire({
+                title: '¿Estás seguro que deseas cambiar el estado?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var estadoBtn = document.getElementById('estadoBtn');
+                    var icono = estadoBtn.querySelector('i');
+
+                    // Cambiar el estado del botón
+                    if (icono.classList.contains('fa-toggle-on')) {
+                        icono.classList.remove('fa-toggle-on');
+                        icono.classList.add('fa-toggle-off');
+                    } else {
+                        icono.classList.remove('fa-toggle-off');
+                        icono.classList.add('fa-toggle-on');
+                    }
+
+                    Swal.fire('Estado de la comisión cambiado', '', 'success');
+                }
+            });
+        }
+    </script>
+
     <script src="/js/funcionesComisiones.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.11/dist/sweetalert2.all.min.js"></script>
     <script src="/js/excelComisiones.js"></script>
     <script src="/js/xlxx.js"></script>
     <script>
-$(document).ready(function() {
-    // Obtener la referencia al campo de búsqueda
-    var searchInput = $("#searchInput");
+        $(document).ready(function () {
+            // Obtener la referencia al campo de búsqueda
+            var searchInput = $("#searchInput");
 
-    // Obtener la referencia a la tabla y su contenido
-    var tableBody = $("#contenido");
+            // Obtener la referencia a la tabla y su contenido
+            var tableBody = $("#contenido");
 
-    // Función de búsqueda
-    function buscar() {
-        var searchTerm = searchInput.val().toLowerCase();
+            // Función de búsqueda
+            function buscar() {
+                var searchTerm = searchInput.val().toLowerCase();
 
-        // Iterar sobre cada fila de la tabla
-        tableBody.find("tr").each(function() {
-            var rowData = $(this).text().toLowerCase();
+                // Iterar sobre cada fila de la tabla
+                tableBody.find("tr").each(function () {
+                    var rowData = $(this).text().toLowerCase();
 
-            // Mostrar u ocultar filas según el término de búsqueda
-            if (rowData.indexOf(searchTerm) === -1) {
-                $(this).hide();
-            } else {
-                $(this).show();
+                    // Mostrar u ocultar filas según el término de búsqueda
+                    if (rowData.indexOf(searchTerm) === -1) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
             }
-        });
-    }
 
-    // Escuchar el evento de cambio en el campo de búsqueda
-    searchInput.on("keyup", function() {
-        buscar();
-    });
-});
-</script>
+            // Escuchar el evento de cambio en el campo de búsqueda
+            searchInput.on("keyup", function () {
+                buscar();
+            });
+        });
+    </script>
+    <script>
+        var select = document.getElementById("fechaA");
+        var currentYear = new Date().getFullYear();
+        var startYear = currentYear - 5; // Cambia el número para definir el rango de años anteriores
+
+        for (var i = startYear; i <= currentYear; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            select.appendChild(option);
+        }
+    </script>
 </body>
 
 </html>

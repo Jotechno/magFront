@@ -16,14 +16,40 @@ const listarDatos = async () => {
       datos = listaComisiones.map(function (comision) {
         respuesta += `<tr><td>${comision._id}</td>` +
           `<td>${comision.nombre_empleado}</td>` +
-          `<td>${comision.total_ventas}</td>` +
-          `<td>${comision.fecha}</td>` +
-          `<td>${comision.porcentaje}%</td>` +
-          `<td>${comision.total_comision}</td>` +
-          `<td>${comision.observacion}</td>` +
+          `<td>2%</td>` +
+          `<td>15000</td>` +
+          `<td>4%</td>` +
+          `<td>2900</td>` +
+          `<td>1%</td>` +
+          `<td>10200</td>` +
+          `<td>3%</td>` +
+          `<td>12000</td>` +
+          `<td>2%</td>` +
+          `<td>4000</td>` +
+          `<td>2%</td>` +
+          `<td>235999</td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+          `<td></td>` +
+
+          `<td></td>` +
+          `<td></td>` +
+          `<td>Activo</td>` +
           `<td>
-          <a class='btn btn-primary' onclick='editar(${JSON.stringify(comision)})'><i class="fa-solid fa-pen-to-square"></i></a>
-          <a class='btn btn-danger' style="display: none;" onclick='eliminar("${comision._id}")'><i class="fa-solid fa-trash-can"></i></a></td></tr>`
+          <a class='btn btn-primary' style="display:none;" onclick='editar(${JSON.stringify(comision)})'><i class="fa-solid fa-pen-to-square"></i></a>
+
+          
+          <a href="/registroComisiones" class="btn btn-success"><i class="fa-solid fa-plus"></i></a>
+          <a class='btn btn-info'  onclick='eliminar("${comision._id}")'><i class="fa-solid fa-eye"></i></a>
+          <a href="#" class="btn btn-warning"><i class="fa-solid fa-toggle-on"></i></a>
+          </td></tr>`
         body.innerHTML = respuesta;
       });
 
@@ -257,52 +283,36 @@ document.addEventListener("DOMContentLoaded", obtenerEmpleados);
 
 const inputFecha = document.getElementById('fecha_comi');
 const fechaActual = new Date();
-const fechaFormateada = fechaActual.toISOString().slice(0, 10);
+const year = fechaActual.getFullYear();
+const month = (fechaActual.getMonth() + 1).toString().padStart(2, '0'); // Añade un cero al mes si es menor a 10
+const fechaFormateada = `${year}/${month}`;
 inputFecha.value = fechaFormateada;
-
-
-const inputPorcentajeComision = document.getElementById('porcentaje');
-const inputTotalComision = document.getElementById('total_comision');
-const inputTotalVenta = document.getElementById('total_ventas');
-
-
-
-if (inputPorcentajeComision && inputTotalComision && inputTotalVenta) {
-  inputPorcentajeComision.addEventListener('input', (event) => {
-    const totalComision = parseFloat(event.target.value);
-    const totalVenta = parseFloat(inputTotalVenta.value);
-    const comisionTotal =  totalVenta * (totalComision/100);
-    inputTotalComision.value = comisionTotal;
-  });
-}
 
 
 const registrar = async () => {
   // Obtener los valores de los campos
-  let empleadoSelect = document.getElementById('empleados');
-  let empleadoNombre = empleadoSelect.options[empleadoSelect.selectedIndex].text;
+  let empleadoSelect = document.getElementById('empleados').value;
+  // let empleadoNombre = empleadoSelect.options[empleadoSelect.selectedIndex].text;
 
-  let fecha = document.getElementById('fecha_comi').value;
+  // let fecha = document.getElementById('fecha_comi').value;
 
 
   let porcentaje = document.getElementById('porcentaje').value;
-  let observacion = document.getElementById('observacion').value;
-  let total_venta = document.getElementById('total_ventas').value;
-  let total_comision = document.getElementById('total_comision').value;
+  let fecha = document.getElementById('fecha_comi').value;
+
 
   const validateNombreResult = validateNombre();
-  const validateTotalVentaResult = validateTotalVenta();
-  const validateFechaResult = validateFecha();
+  // const validateFechaResult = validateFecha();
   const validatePorcentajeResult = validatePorcentaje();
 
 
-  if (validateNombreResult && validateTotalVentaResult && validateFechaResult && validatePorcentajeResult) {
+  if (validateNombreResult  && validatePorcentajeResult) {
     
     // Realizar la solicitud de registro
 
     Swal.fire({
       title: '¿Está seguro que desea registrar la comisión?',
-      text: 'Recuerde que solo podrá editarla el día 29 del mes actual',
+      text: '',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Registrar',
@@ -311,26 +321,26 @@ const registrar = async () => {
       cancelButtonColor: '#d33'
     }).then((result) => {
       if (result.isConfirmed) {
-        // El usuario hizo clic en el botón "Registrar"
-        let comision = {
-          nombre_empleado: empleadoNombre,
-          total_ventas: total_venta,
-          fecha: fecha,
-          porcentaje: porcentaje,
-          total_comision: total_comision,
-          observacion: observacion
-        };
-        console.log(comision)
-        fetch(url, {
-          method: 'POST',
-          mode: 'cors',
-          body: JSON.stringify(comision),
-          headers: { "Content-type": "application/json; charset=UTF-8" }
-        })
-          .then((resp) => resp.json())
-          .then(JSON => {
+        // // El usuario hizo clic en el botón "Registrar"
+        // let comision = {
+        
+
+        //   fecha: fecha,
+        //   porcentaje: porcentaje,
+
+
+        // };
+        // console.log(comision)
+        // fetch(url, {
+        //   method: 'POST',
+        //   mode: 'cors',
+        //   body: JSON.stringify(comision),
+        //   headers: { "Content-type": "application/json; charset=UTF-8" }
+        // })
+        //   .then((resp) => resp.json())
+        //   .then(JSON => {
             Swal.fire(
-              JSON.msg,
+              'Comision registrada con éxito',
               'Seras redireccionado a las comisiones en 5 segundos',
               'success'
             )
@@ -340,7 +350,7 @@ const registrar = async () => {
                 }, 5000); // Redirige después de 5 segundos (5000 milisegundos)
               });
     
-          });
+          // });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // El usuario hizo clic en el botón "Cancelar"
         Swal.fire(
@@ -350,10 +360,7 @@ const registrar = async () => {
         )
       }
     });
-    
-
-
-    
+     
   }
 }
 
@@ -567,11 +574,10 @@ const registrar = async () => {
       };
       
 
-
       const validateFecha = () => {
         let fecha = document.getElementById('fecha_comi').value;
         let texto;
-        let expresion = /^\d{4}-\d{2}-\d{2}$/;
+        let expresion = /^\d{4}-\d{2}$/; // Expresión regular modificada para el formato año/mes
       
         if (fecha === null || fecha === '' || fecha.length === 0) {
           texto = '<span style="color: #fff; background-color: #e6213f; padding: 3px;border-radius: 3px;">La fecha no puede estar vacía</span>';
@@ -583,7 +589,7 @@ const registrar = async () => {
           )
           return false;
         } else if (!expresion.test(fecha)) {
-          texto = '<span style="color: #fff; background-color: #e6213f; padding: 3px;border-radius: 3px;">El formato de fecha debe ser año-mes-día</span>';
+          texto = '<span style="color: #fff; background-color: #e6213f; padding: 3px;border-radius: 3px;">El formato de fecha debe ser año/mes</span>';
           document.getElementById('texto4').innerHTML = texto;
           Swal.fire(
             'Hay errores en algunos datos, reviselos nuevamente',

@@ -36,8 +36,9 @@
                     <!-- SELECT2 EXAMPLE -->
                     <div class="card card-default">
                         <div class="card-header">
-                            <h3 class="card-title">{{subtitulo}}  <p> Los campos señalados con <span
-                                        style="color: red; vertical-align: super;">*</span> son obligatorios</p></h3>
+                            <h3 class="card-title">{{subtitulo}} <p> Los campos señalados con <span
+                                        style="color: red; vertical-align: super;">*</span> son obligatorios</p>
+                            </h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -54,24 +55,35 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="empleado">Nombre empleado<span
-                                        style="color: red; vertical-align: super;">*</span></label>
-                                        <select class="form-control " id="empleados" style="width: 100%;">
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <input type="text" id="empleados" class="form-control" style="width: 100%;"
+                                            readonly />
+                                        {{!-- <select class="form-control " id="empleados" style="width: 100%;">
                                             <option value="" disabled selected>Elija un empleado</option>
 
-                                        </select>
+                                        </select> --}}
                                     </div>
                                     <div class="texto" id="texto"></div>
                                 </div>
-
                                 <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <label for="fecha_comi">Fecha<span
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <input type="text" class="form-control" id="fecha_comi" placeholder="Fecha"
+                                            style="width: 100%;" pattern="\d{4}/\d{2}" required  readonly/>
+                                    </div>
+                                    <div class="texto4" id="texto4"></div>
+                                </div>
+                                {{!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="total_ventas">Total ventas<span
-                                        style="color: red; vertical-align: super;">*</span></label>
+                                                style="color: red; vertical-align: super;">*</span></label>
                                         <input type="total_venta" class="form-control" id="total_ventas"
                                             placeholder="Total ventas" style="width: 100%;" />
                                     </div>
                                     <div class="texto2" id="texto2"></div>
-                                </div>
+                                </div> --}}
                                 <!-- /.form-group -->
                             </div>
 
@@ -80,11 +92,11 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="porcentaje">Porcentaje<span
-                                        style="color: red; vertical-align: super;">*</span></label>
+                                        <label for="porcentaje">Porcentaje de comisión<span
+                                                style="color: red; vertical-align: super;">*</span></label>
                                         <select class="form-control " id="porcentaje" style="width: 100%;">
                                             <option value="" disabled selected>Elija un porcentaje</option>
-                                            <option value="1">1</option> 
+                                            <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
                                             <option value="4">4</option>
@@ -95,48 +107,40 @@
                                     <div class="texto3" id="texto3"></div>
                                 </div>
                                 <!-- /.form-group -->
-                                <div class="col-md-6">
 
-                                    <div class="form-group">
-                                        <label for="fecha_comi">Fecha (AAAA-MM-DD)
-                                            {{!-- <span
-                                        style="color: red; vertical-align: super;">*</span> --}}
-                                        </label>
-                                        <input type="fecha_comi" class="form-control" id="fecha_comi"
-                                            placeholder="Fecha" style="width: 100%;" readonly />
-                                    </div>
-                                    <div class="texto4" id="texto4"></div>
-                                </div>
                                 <!-- /.form-group -->
+                                {{!-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="estado">Estado</label>
+                                        <select class="form-control " id="estado" style="width: 100%;">
+                                            <option value="" disabled selected>Estado</option>
+                                            <option value="true">Activa</option>
+                                            <option value="false">Inactiva</option>
 
+                                        </select>
+
+                                    </div>
+                                    <div class="texto5" id="texto5"></div>
+                                    </br>
+
+                                </div> --}}
                             </div>
 
                             <div class="row">
 
                                 <!-- /.col -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="observacion">observaciones del empleado</label>
-                                        <input type="observacion" class="form-control" id="observacion"
-                                            placeholder="Observacion" style="width: 100%;" />
 
-                                    </div>
-                                    <div class="texto5" id="texto5"></div>
-                                    </br>
-                                    <!-- /.form-group -->
-                                </div>
                                 <!-- /.form-group -->
-                                 <div class="col-md-6">
-                                    <div class="form-group">
+                                <div class="col-md-6">
+                                    {{!-- <div class="form-group">
                                         <label for="total_comision">Total comisión
-                                            {{!-- <span
-                                        style="color: red; vertical-align: super;">*</span> --}}
+
                                         </label>
                                         <input type="total_comision" class="form-control" id="total_comision"
                                             placeholder="Total comisión" style="width: 100%;" readonly />
 
                                     </div>
-                                    <div class="texto6" id="texto6"></div>
+                                    <div class="texto6" id="texto6"></div> --}}
                                     </br>
                                     <!-- /.form-group -->
                                 </div>
@@ -182,7 +186,9 @@
     <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
+    <script>
+        document.getElementById("empleados").value = "Julio antonela";
+    </script>
     <!-- jQuery -->
     <script src="/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -206,29 +212,15 @@
     <!-- AdminLTE for demo purposes -->
     <script src="/js/demo.js"></script>
     <!-- Page specific script -->
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false, "autoWidth": false, "buttons": ["copy", "csv",
-                    "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true, "lengthChange": false,
-                "searching": false, "ordering": true, "info": true, "autoWidth": false,
-                "responsive": true,
-            });
-        });
 
-
-    </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             obtenerEmpleados();
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.11/dist/sweetalert2.all.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.33/moment-timezone-with-data.min.js"></script>
 
 </body>
 

@@ -557,15 +557,15 @@ const validateFecha = () => {
       'error'
     )
     return false;
-  } else if (!expresion.test(fecha)) {
-    texto = '<span style="color: #fff; background-color: #e6213f; padding: 3px;border-radius: 3px;">El formato de fecha debe ser año-mes-día</span>';
-    document.getElementById('texto').innerHTML = texto;
-    Swal.fire(
-      'Hay errores en algunos datos, reviselos nuevamente',
-      '',
-      'error'
-    )
-    return false;
+  // } else if (!expresion.test(fecha)) {
+  //   texto = '<span style="color: #fff; background-color: #e6213f; padding: 3px;border-radius: 3px;">El formato de fecha debe ser año-mes-día</span>';
+  //   document.getElementById('texto').innerHTML = texto;
+  //   Swal.fire(
+  //     'Hay errores en algunos datos, reviselos nuevamente',
+  //     '',
+  //     'error'
+  //   )
+  //   return false;
   } else {
     document.getElementById('texto').innerHTML = '';
     return true;

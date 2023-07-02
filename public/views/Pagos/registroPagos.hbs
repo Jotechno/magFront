@@ -10,12 +10,8 @@
 
 <body class="hold-transition sidebar-mini" onload="fechaActual()">
     <div class="wrapper">
-
         {{> navbar}}
-
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -29,18 +25,15 @@
                             </ol>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
+                </div>
             </section>
-
-            <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <!-- SELECT2 EXAMPLE -->
                     <div class="card card-default">
                         <div class="card-header">
                             <h3 class="card-title">{{subtitulo}}<p> Los campos señalados con <span
-                                        style="color: red; vertical-align: super;">*</span> son obligatorios</p></h3>
-
+                                        style="color: red; vertical-align: super;">*</span> son obligatorios</p>
+                            </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -50,156 +43,135 @@
                                 </button>
                             </div>
                         </div>
-                        <!-- /.card-header -->
                         <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="cliente">Cliente<span
-                                        style="color: red; vertical-align: super;">*</span></label>
-                                            <select class="form-control " id="clientes" style="width: 100%;">
-                                                <option value="" disabled selected>Elija un cliente</option>
-
-                                            </select>
-                                        </div>
-
-                                        <div class="texto2" id="texto2"></div>
-
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cliente">Cliente<span
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <select class="form-control " id="clientes" style="width: 100%;">
+                                            <option value="" disabled selected>Elija un cliente</option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="fecha">Fecha<span
-                                        style="color: red; vertical-align: super;">*</span></label>
-                                            <input type="fecha" class="form-control" id="fecha" placeholder="Fecha"
-                                                style="width: 100%;" readonly />
-                                        </div>
-                                        <div class="texto" id="texto"></div>
-                                    </div>
-                                    <!-- /.form-group -->
+                                    <div class="texto2" id="texto2"></div>
                                 </div>
-
-                                <!-- /.col -->
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="factura">Factura<span
-                                        style="color: red; vertical-align: super;">*</span></label>
-                                            <select class="form-control " id="factura" style="width: 100%;">
-                                                <option value="" disabled selected>Elija una factura</option>
-
-                                            </select>
-                                        </div>
-                                        <div class="texto3" id="texto3"></div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="fecha">Fecha<span
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <input type="fecha" class="form-control" id="fecha" placeholder="Fecha"
+                                            style="width: 100%;" readonly />
                                     </div>
-                                    <!-- /.form-group -->
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-                                            <label for="cantidad_pago">Cantidad Pago<span
-                                        style="color: red; vertical-align: super;">*</span></label>
-                                            <input type="cantidad_pago" class="form-control" id="cantidad_pago"
-                                                placeholder="Cantidad pagada" style="width: 100%;" />
-                                        </div>
-                                        <div class="texto4" id="texto4"></div>
-                                    </div>
-                                    <!-- /.form-group -->
-
+                                    <div class="texto" id="texto"></div>
                                 </div>
-
-                                <div class="row">
-
-                                    <!-- /.col -->
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="cantidad_restante">Cantidad restante<span
-                                        style="color: red; vertical-align: super;">*</span></label>
-                                            <input type="cantidad_restante" class="form-control" id="cantidad_restante"
-                                                placeholder="Cantidad restante" style="width: 100%;" readonly />
-
-                                        </div>
-                                        <div class="texto5" id="texto5"></div>
-                                        <!-- /.form-group -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="factura">Factura<span
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <select class="form-control " id="factura" style="width: 100%;">
+                                            <option value="" disabled selected>Elija una factura</option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-                                            <label for="venta">Total venta<span
-                                        style="color: red; vertical-align: super;">*</span></label>
-                                            <input type="venta" class="form-control" id="total_venta"
-                                                placeholder="Total venta" style="width: 100%;" readonly />
-                                        </div>
-                                        <div class="texto6" id="texto6"></div>
+                                    <div class="texto3" id="texto3"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cantidad_pago">Monto Pago<span
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <input type="cantidad_pago" class="form-control" id="cantidad_pago"
+                                            placeholder="Monto pagado" style="width: 100%;" />
                                     </div>
-
-                                    <!-- /.form-group -->
-
+                                    <div class="texto4" id="texto4"></div>
                                 </div>
-
-                                <div class="row"></div>
-                                <div class="col-lg-12">
-
-                                    <input class="sendbtn btn btn-success" id="btnRegistrar" type="button" value="Registrar"
-                                        onclick="registrar()">
-                                    <a href="/pagos"><button class="sendbtn btn btn-secondary"
-                                            type="button">Regresar</button></a>
-                                    <script type="text/javascript" src="js/funcionesPagos.js"></script>
-
-
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cantidad_restante">Monto restante<span
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <input type="cantidad_restante" class="form-control" id="cantidad_restante"
+                                            placeholder="Monto restante" style="width: 100%;" readonly />
+                                    </div>
+                                    <div class="texto5" id="texto5"></div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="venta">Total venta<span
+                                                style="color: red; vertical-align: super;">*</span></label>
+                                        <input type="venta" class="form-control" id="total_venta"
+                                            placeholder="Total venta" style="width: 100%;" readonly />
+                                    </div>
+                                    <div class="texto6" id="texto6"></div>
+                                </div>
+                            </div>
+                            <div class="row"></div>
+                            <div class="col-lg-12">
+                                <input class="sendbtn btn btn-success" id="btnRegistrar" type="button" value="Registrar"
+                                    onclick="registrar()">
+                                <a href="/pagos"><button class="sendbtn btn btn-secondary"
+                                        type="button">Regresar</button></a>
+                                <script type="text/javascript" src="js/funcionesPagos.js"></script>
+                            </div>
 
-                            <!-- /.card-body -->
                         </div>
-
                     </div>
 
 
+                    <div class="card-body">
+                        <div class="row"></div>
+
+                        <table id="tablaPagos" class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre cliente</th>
+                                    <th>Fecha de pago</th>
+                                    <th># Factura</th>
+                                    <th>Monto pago</th>
+                                    <th>Monto restante</th>
+                                    <th>Total venta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>64919f812b8fa1f7f876aec2</td>
+                                    <td>maria </td>
+                                    <td>2023-06-20</td>
+                                    <td>4</td>
+                                    <td>140000</td>
+                                    <td>60000</td>
+                                    <td>200000</td>
+                                </tr>
+                                <tr>
+                                    <td>649778beabd0b74096c73f1f</td>
+                                    <td>maria </td>
+                                    <td>2023-06-24</td>
+                                    <td>4</td>
+                                    <td>100000</td>
+                                    <td>100000</td>
+                                    <td>200000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <script type="text/javascript" src="js/funcionesPagos.js"></script>
+                    </div>
                 </div>
-
-                <!-- /.card -->
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
-    <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
     {{> footer}}
-
-    <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
     </aside>
-    <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
-
-    <!-- jQuery -->
     <script src="/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
     <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables  & Plugins -->
-    <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="/plugins/jszip/jszip.min.js"></script>
-    <script src="/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="https://kit.fontawesome.com/4de2284caa.js" crossorigin="anonymous"></script>
-    <!-- AdminLTE App -->
     <script src="/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
     <script src="/js/demo.js"></script>
-    <!-- Page specific script -->
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             obtenerClientes();
